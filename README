@@ -1,0 +1,2 @@
+DB:
+    - Součástí docker nasazení je i ADMINER pro jednoduchý průzkum DB projektu
