@@ -1,2 +1,3 @@
 DB:
+    - Podle emailu mám využít MariaDB. Jinak bych použil MySQL. Neníto preference, čistě jen zvyk 
     - Součástí docker nasazení je i ADMINER pro jednoduchý průzkum DB projektu
