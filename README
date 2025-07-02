@@ -1,3 +1,7 @@
+UI:
+    - Nevím jak je to u vás, David mi odpověděl že využíváte kombinaci react.twig komponent a čistých html komponent. Já využil prostě jen html + bootstrap
+    
+
 DB:
     - Podle emailu mám využít MariaDB. Jinak bych použil MySQL. Neníto preference, čistě jen zvyk 
     - Součástí docker nasazení je i ADMINER pro jednoduchý průzkum DB projektu
