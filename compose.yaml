@@ -1,15 +1,15 @@
 services:
   
   db:
-    name: Yetinder_Lesak_MariaDB
     image: mariadb
     restart: always
+    ports:
+      - 3306:3306
     environment:
       MARIADB_ROOT_PASSWORD: Aa123456
       MARIADB_DATABASE: Yetinder_Lesak_DB
 
   adminer:
-    name: Yetinder_Lesak_Adminer
     image: adminer
     restart: always
     ports:
