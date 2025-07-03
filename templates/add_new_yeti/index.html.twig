@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Přidat Yetiho{% endblock %}
+
+{% block body %}
+    <h1>Přidat nového Yetiho</h1>
+
+    {{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_label(form.name) }}
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.name) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.gender) }}
+            {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.height) }}
+            {{ form_widget(form.height, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.weight) }}
+            {{ form_widget(form.weight, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <div class="mb-3">
+            {{ form_label(form.location) }}
+            {{ form_widget(form.location, {'attr': {'class': 'form-control'}}) }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Uložit</button>
+    {{ form_end(form) }}
+{% endblock %}

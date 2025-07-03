@@ -8,10 +8,23 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class AddNewYetyController extends AbstractController
 {
-    #[Route('/addNewYety', name: 'app_add_new_yety')]
-    public function index(): Response
+    #[Route('/addNewYeti', name: 'app_add_new_yeti')]
+    public function index(Request $request, EntityManagerInterface $em): Response
     {
-        return $this->render('add_new_yety/index.html.twig', [
+
+        $yeti = new Yeti();
+
+        $form = $this->createForm(YetiType::class, $yeti);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($yeti);
+            $em->flush();
+
+            return $this->redirectToRoute('yeti_index');
+        }
+
+        return $this->render('add_new_yeti/index.html.twig', [
             'controller_name' => 'AddNewYetyController',
         ]);
     }

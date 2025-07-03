@@ -11,7 +11,9 @@ class LandingPageController extends AbstractController
     #[Route('/')]
     public function index(): Response
     {
-        return $this->render('landingPage/index.html.twig');
+        return $this->render('landingPage/index.html.twig',[
+            'yetis' => []
+        ]);
 
     }
 }

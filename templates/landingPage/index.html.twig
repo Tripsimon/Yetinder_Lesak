@@ -1,18 +1,36 @@
-{% extends 'base.html.twig'%}
+{% extends 'base.html.twig' %}
+
+{% block title %}Nejlépe hodnocení Yeti{% endblock %}
 
 {% block body %}
-<div class="container text-center">
-  <div class="row align-items-center">
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-    <div class="col">
-      One of three columns
-    </div>
-  </div>
-</div>
-<h1> Heading element</h1
+    <h1>Top 10 Yeti</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Jméno</th>
+                <th>Pohlaví</th>
+                <th>Výška (cm)</th>
+                <th>Váha (kg)</th>
+                <th>Bydliště</th>
+                <th>Hodnocení</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for yeti in yetis %}
+                <tr>
+                    <td>{{ yeti.name }}</td>
+                    <td>{{ yeti.gender }}</td>
+                    <td>{{ yeti.height }}</td>
+                    <td>{{ yeti.weight }}</td>
+                    <td>{{ yeti.location }}</td>
+                    <td>{{ yeti.rating|default(0) }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Žádní Yeti zatím nebyli hodnoceni.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}
