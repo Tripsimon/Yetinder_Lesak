@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\Gender;
 use App\Repository\YetiRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -28,6 +29,9 @@ class Yeti
 
     #[ORM\Column(length: 128, nullable: true)]
     private ?string $placeOfStay = null;
+
+    #[ORM\Column(enumType: Gender::class)]
+    private ?Gender $gender = null;
 
     public function getId(): ?int
     {
@@ -90,6 +94,18 @@ class Yeti
     public function setPlaceOfStay(?string $placeOfStay): static
     {
         $this->placeOfStay = $placeOfStay;
+
+        return $this;
+    }
+
+    public function getGender(): ?Gender
+    {
+        return $this->gender;
+    }
+
+    public function setGender(Gender $gender): static
+    {
+        $this->gender = $gender;
 
         return $this;
     }
