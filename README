@@ -1,3 +1,7 @@
+.ENV
+    - Env soubor by samozějmně v Git repozitáři být neměl, i kdyby byl privátní. Pro jednoduchost zapnutí jsem však .ENV ručně z .gitignore vyndal aby si je pan programátor nemusel doplňovat sám.
+    - Já například .ENV k projektům přiřazuji pomocí CI/CD při nasazování.
+
 UI:
     - Nevím jak je to u vás, David mi odpověděl že využíváte kombinaci react.twig komponent a čistých html komponent. Já využil prostě jen html + bootstrap
     
