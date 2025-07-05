@@ -14,7 +14,8 @@ class LandingPageController extends AbstractController
     {
 
         $yetisInDB = $yetiRepository->findAll();
-
+        //echo '<pre>' . var_export($yetisInDB, true) . '</pre>';
+        //die();
         return $this->render('landingPage/index.html.twig',[
             'yetis' => $yetisInDB
         ]);
