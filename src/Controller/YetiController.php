@@ -14,6 +14,7 @@ final class YetiController extends AbstractController
     {
         $yetiToShow = $yetiRepository->findOneBy(['id' => $id]);
 
+
         return $this->render('yeti/index.html.twig', [
             'controller_name' => 'YetiController',
             'yeti' => $yetiToShow
