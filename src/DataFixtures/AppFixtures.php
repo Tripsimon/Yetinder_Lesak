@@ -20,6 +20,7 @@ class AppFixtures extends Fixture
             $newYeti->setHeight(240.20);
             $newYeti->setGender(($i % 2) == 0 ? Gender::Male : Gender::Female);
             $newYeti->setPlaceOfStay("Horní Kalná");
+            $newYeti->setCurrentRating(0);
             $manager->persist($newYeti);
         }
 

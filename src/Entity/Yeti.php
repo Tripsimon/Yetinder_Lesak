@@ -33,6 +33,9 @@ class Yeti
     #[ORM\Column(enumType: Gender::class)]
     private ?Gender $gender = null;
 
+    #[ORM\Column]
+    private ?int $currentRating = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -106,6 +109,18 @@ class Yeti
     public function setGender(Gender $gender): static
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    public function getCurrentRating(): ?int
+    {
+        return $this->currentRating;
+    }
+
+    public function setCurrentRating(int $currentRating): static
+    {
+        $this->currentRating = $currentRating;
 
         return $this;
     }

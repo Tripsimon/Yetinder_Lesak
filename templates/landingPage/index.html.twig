@@ -13,6 +13,7 @@
                 <th>Výška (cm)</th>
                 <th>Váha (kg)</th>
                 <th>Bydliště</th>
+                <th>Detail</th>
             </tr>
         </thead>
         <tbody>
@@ -23,6 +24,9 @@
                     <td>{{ yeti.height }}</td>
                     <td>{{ yeti.weight }}</td>
                     <td>{{ yeti.placeOfStay }}</td>
+                    <td>
+                        <a href="{{ path('yeti_detail', { id: yeti.id }) }}">Detail</a>
+                    </td>
                 </tr>
             {% else %}
                 <tr>
