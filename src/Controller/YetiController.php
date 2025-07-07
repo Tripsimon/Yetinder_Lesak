@@ -39,7 +39,10 @@ final class YetiController extends AbstractController
             'timestamp' => (new \DateTime())->format('Y-m-d H:i:s'),
         ]);
 
+        // ZIskani dalsiho yetiho. Random je taky algoritmus :D
+        $randomYeti = $connection->fetchAssociative('SELECT id FROM yeti WHERE id != ? ORDER BY RAND() LIMIT 1', [$id]);
+
         // Presmerovani dal (tinder "Swajpovani")
-        return $this->redirectToRoute('yeti_detail', ['id' => $id]);
+        return $this->redirectToRoute('yeti_detail', ['id' => $randomYeti['id']]);
     }
 }
