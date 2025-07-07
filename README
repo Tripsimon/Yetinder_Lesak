@@ -9,7 +9,14 @@ UI:
 DB:
     - Podle emailu mám využít MariaDB. Jinak bych použil MySQL. Neníto preference, čistě jen zvyk 
     - Součástí docker nasazení je i ADMINER pro jednoduchý průzkum DB projektu
-    - KOmunikace s DB je samozřejmně sanitizována. Nikde není concate vstupu uživatele do SQL dotazu... to si ale DBAL zajistí samo
+    - Komunikace s DB je samozřejmně sanitizována. Nikde není concate vstupu uživatele do SQL dotazu... to si ale DBAL zajistí samo
+    - Při tvorbě projektu jsem objevil ze order by RAND podporuje pouze MySQL... což maria technicky v zato je tak jsem to využil
+    - !! POZOR !! - Každý yety u sebe má i momentalní hodnocení. vypočet těch je vyráběn pomocí triggeru.  To asi neni uplně optimální řešení, dovedu si představit něco jako FB kde se né vždy zobrazí přesný rating ale dopočítá se pak někdy stranou pomocí nějakého cronu. Nebo to dělat lokálně a pak... zavisí to na požadavku na aplikaci. Trigger jsem nechtěl dávat do migrace tak je stranou v souboru yetiRatingTrigger.sql
 
 Entity
     - byl využit Symfony Entity generator
+
+Misc
+    - Vývoj proběhl ve VSCode cistě z duvodu toho, že jsem na něho doma zvyklí. V práci jsem však IDEA prostředí používal a problém s ním nemám
+    - PHP jsem spouštěl lokálně
+    - Unit testy jsem negeneroval i když chápu že jsou duležité. Přiznám se ale že s psaním testů mám poměrně povrchní zkušenosti

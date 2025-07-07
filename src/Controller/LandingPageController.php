@@ -18,8 +18,24 @@ class LandingPageController extends AbstractController
             ->getQuery()
             ->getResult();
 
+        $randomMaleYeti = $yetiRepository->createQueryBuilder('y')
+            ->where('y.gender = :gender')
+            ->setParameter('gender', 'male')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+
+        $randomFemaleYeti = $yetiRepository->createQueryBuilder('y')
+            ->where('y.gender = :gender')
+            ->setParameter('gender', 'female')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult();
+
         return $this->render('landingPage/index.html.twig', [
-            'topYetis' => $topYetis
+            'topYetis' => $topYetis,
+            'randomMale' => $randomMaleYeti,
+            'randomFemale' => $randomFemaleYeti
         ]);
 
     }
