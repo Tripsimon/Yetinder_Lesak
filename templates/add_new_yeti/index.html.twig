@@ -1,37 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Přidat Yetiho{% endblock %}
+{% block title %}
+  Přidat Yetiho
+{% endblock %}
 
 {% block body %}
+  <div class="container text-center">
     <h1>Přidat nového Yetiho</h1>
-
     {{ form_start(form) }}
-        <div class="mb-3">
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
-            {{ form_errors(form.name) }}
-        </div>
+    <div class="row">
+      <div class="col-6 col-md-4">{{ form_row(form.name) }}</div>
 
-        <div class="mb-3">
-            {{ form_label(form.gender) }}
-            {{ form_widget(form.gender, {'attr': {'class': 'form-control'}}) }}
-        </div>
+      <div class="col-6 col-md-4">{{ form_row(form.placeOfStay) }}</div>
 
-        <div class="mb-3">
-            {{ form_label(form.height) }}
-            {{ form_widget(form.height, {'attr': {'class': 'form-control'}}) }}
-        </div>
+      <div class="col-6 col-md-4">{{ form_row(form.age) }}</div>
 
-        <div class="mb-3">
-            {{ form_label(form.weight) }}
-            {{ form_widget(form.weight, {'attr': {'class': 'form-control'}}) }}
-        </div>
+      <div class="col-6 col-md-4">{{ form_row(form.gender) }}</div>
 
-        <div class="mb-3">
-            {{ form_label(form.location) }}
-            {{ form_widget(form.location, {'attr': {'class': 'form-control'}}) }}
-        </div>
+      <div class="col-6 col-md-4">{{ form_row(form.weight) }}</div>
 
-        <button type="submit" class="btn btn-primary">Uložit</button>
-    {{ form_end(form) }}
+      <div class="col-6 col-md-4">{{ form_row(form.height) }}</div>
+    </div>
+    <div class="flex mt-4">{{ form_row(form.submit) }}</div>
+    <div class="">{{ form_end(form, {'render_rest': false}) }}</div>
+  </div>
 {% endblock %}
