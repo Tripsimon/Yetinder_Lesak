@@ -11,14 +11,19 @@ use App\Form\YetiForm;
 
 final class AddNewYetyController extends AbstractController
 {
+    /**
+     * Routa pro přidání nového Yetyho
+     */
     #[Route('/addNewYeti', name: 'app_add_new_yeti')]
     public function index(Request $request, Connection $connection): Response
     {
         $newYeti = new Yeti(); 
 
+        // Tvorba formuláře pomocíform Builderu
         $form = $this->createForm(YetiForm::class, $newYeti);
         $form->handleRequest($request);
 
+        // Obsloužení odeslaneho formuláře
         if ($form->isSubmitted()) {
 
             $connection->insert('yeti', [
@@ -31,14 +36,15 @@ final class AddNewYetyController extends AbstractController
                 'current_rating' => 0
             ]);
 
+            // Přdejití zobrazení stejného yetyho
             $lastInsertId = $connection->lastInsertId();
-
             $this->addFlash('success', 'Yeti byl úspěšně přidán!');
             return $this->redirectToRoute('yeti_detail',[
                 'id' => $lastInsertId,
             ]);
         }
 
+        //Render
         return $this->render('add_new_yeti/index.html.twig', [
             'form' => $form->createView(),
         ]);

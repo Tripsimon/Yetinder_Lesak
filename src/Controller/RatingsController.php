@@ -12,7 +12,7 @@ final class RatingsController extends AbstractController
     #[Route('/ratings/{timeSpan}', name: 'app_ratings')]
     public function index(string $timeSpan, Connection $connection): Response
     {
-
+        //Změna chovani podle vyberu casu
         $whereClause = '';
         switch ($timeSpan) {
             case 'month':
@@ -24,10 +24,11 @@ final class RatingsController extends AbstractController
                 break;
 
             default:
-                # code...
+                $whereClause = '';
                 break;
         }
 
+        // priprava SQL zapisu (Heredoc kvuli where)
         $sql = <<<SQL
             SELECT r.id, y.name AS yetiName, r.rating, r.timestamp
             FROM yeti_rating r
@@ -38,6 +39,7 @@ final class RatingsController extends AbstractController
 
         $allRatings = $connection->fetchAllAssociative($sql);
 
+        //render
         return $this->render('ratings/index.html.twig', [
             'controller_name' => 'RatingsController',
             'ratings' => $allRatings

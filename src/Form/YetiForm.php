@@ -11,17 +11,20 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Validator\Constraints\Positive;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+;
 use App\Enum\Gender;
 
 class YetiForm extends AbstractType
 {
+
+    //Form builder
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class, [
-    'label' => 'Jméno',
-])
+                'label' => 'Jméno',
+            ])
             ->add('weight', IntegerType::class, [
                 'label' => 'Váha',
                 'constraints' => [

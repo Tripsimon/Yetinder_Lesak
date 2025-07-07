@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: YetiRepository::class)]
 class Yeti
 {
+    // Vygenerovaná entita yetiho
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

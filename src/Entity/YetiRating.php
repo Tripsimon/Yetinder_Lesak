@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: YetiRatingRepository::class)]
 class YetiRating
 {
+
+    //Vygenerovaná entita hodnocení yetiho
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

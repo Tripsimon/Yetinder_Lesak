@@ -11,6 +11,9 @@ use App\Repository\YetiRepository;
 
 final class YetiController extends AbstractController
 {
+
+    
+    // Vypis detailu jetyho
     #[Route('/yeti/{id}', name: 'yeti_detail')]
     public function index($id, YetiRepository $yetiRepository): Response
     {
@@ -24,6 +27,7 @@ final class YetiController extends AbstractController
     }
 
 
+    // Rating yetyho. 
     #[Route('/rate/{ratingGender}/{id}/{direction}', name: 'yeti_rate')]
     public function rate(string $ratingGender ,int $id, string $direction, Connection $connection): Response
     {
