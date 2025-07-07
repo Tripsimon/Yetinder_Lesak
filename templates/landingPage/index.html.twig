@@ -1,38 +1,42 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nejlépe hodnocení Yeti{% endblock %}
+{% block title %}
+  Nejlépe hodnocení Yeti
+{% endblock %}
 
 {% block body %}
-    <h1>Top 10 Yeti</h1>
+  <div class="container">
+    <h1 class="text-center">Top deset Yetú</h1>
 
     <table class="table table-bordered table-striped">
-        <thead class="table-dark">
-            <tr>
-                <th>Jméno</th>
-                <th>Pohlaví</th>
-                <th>Výška (cm)</th>
-                <th>Váha (kg)</th>
-                <th>Bydliště</th>
-                <th>Detail</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for yeti in yetis %}
-                <tr>
-                    <td>{{ yeti.name }}</td>
-                    <td>{{ yeti.gender.value }}</td>
-                    <td>{{ yeti.height }}</td>
-                    <td>{{ yeti.weight }}</td>
-                    <td>{{ yeti.placeOfStay }}</td>
-                    <td>
-                        <a href="{{ path('yeti_detail', { id: yeti.id }) }}">Detail</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="6">Žádní Yeti zatím nebyli hodnoceni.</td>
-                </tr>
-            {% endfor %}
-        </tbody>
+      <thead class="table-dark">
+        <tr>
+          <th>Jméno</th>
+          <th>Pohlaví</th>
+          <th>Výška (cm)</th>
+          <th>Váha (kg)</th>
+          <th>Bydliště</th>
+          <th>Detail</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for yeti in yetis %}
+          <tr>
+            <td>{{ yeti.name }}</td>
+            <td>{{ yeti.gender.value }}</td>
+            <td>{{ yeti.height }}</td>
+            <td>{{ yeti.weight }}</td>
+            <td>{{ yeti.placeOfStay }}</td>
+            <td>
+              <a href="{{ path('yeti_detail', { id: yeti.id }) }}">Detail</a>
+            </td>
+          </tr>
+        {% else %}
+          <tr>
+            <td colspan="6">Žádní Yeti zatím nebyli hodnoceni.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
     </table>
+  </div>
 {% endblock %}

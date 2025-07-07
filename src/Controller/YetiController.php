@@ -5,12 +5,13 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Doctrine\DBAL\Connection;
 use App\Repository\YetiRepository;
 
 final class YetiController extends AbstractController
 {
     #[Route('/yeti/{id}', name: 'yeti_detail')]
-    public function index($id,YetiRepository $yetiRepository): Response
+    public function index($id, YetiRepository $yetiRepository): Response
     {
         $yetiToShow = $yetiRepository->findOneBy(['id' => $id]);
 
@@ -19,5 +20,26 @@ final class YetiController extends AbstractController
             'controller_name' => 'YetiController',
             'yeti' => $yetiToShow
         ]);
+    }
+
+
+    #[Route('/rate/{id}/{direction}', name: 'yeti_rate')]
+    public function rate(int $id, string $direction, Connection $connection): Response
+    {
+        // Validace
+        if (!in_array($direction, ['positive', 'negative'])) {
+            throw $this->createNotFoundException('Neplatný směr hodnocení.');
+        }
+
+
+        // Vlastni insert do DB pomoci DBAL connection
+        $connection->insert('yeti_rating', [
+            'yeti_id' => $id,
+            'rating' => $direction == 'positive' ? true : 0,
+            'timestamp' => (new \DateTime())->format('Y-m-d H:i:s'),
+        ]);
+
+        // Presmerovani dal (tinder "Swajpovani")
+        return $this->redirectToRoute('yeti_detail', ['id' => $id]);
     }
 }
