@@ -12,10 +12,14 @@ class LandingPageController extends AbstractController
     #[Route('/')]
     public function index(YetiRepository $yetiRepository): Response
     {
+        $topYetis = $yetiRepository->createQueryBuilder('yety')
+            ->orderBy('yety.currentRating', 'DESC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult();
 
-        $yetisInDB = $yetiRepository->findAll();
-        return $this->render('landingPage/index.html.twig',[
-            'yetis' => $yetisInDB
+        return $this->render('landingPage/index.html.twig', [
+            'topYetis' => $topYetis
         ]);
 
     }

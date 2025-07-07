@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Enum\Gender;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -23,8 +24,8 @@ final class YetiController extends AbstractController
     }
 
 
-    #[Route('/rate/{id}/{direction}', name: 'yeti_rate')]
-    public function rate(int $id, string $direction, Connection $connection): Response
+    #[Route('/rate/{ratingGender}/{id}/{direction}', name: 'yeti_rate')]
+    public function rate(string $ratingGender ,int $id, string $direction, Connection $connection): Response
     {
         // Validace
         if (!in_array($direction, ['positive', 'negative'])) {
@@ -39,8 +40,9 @@ final class YetiController extends AbstractController
             'timestamp' => (new \DateTime())->format('Y-m-d H:i:s'),
         ]);
 
-        // ZIskani dalsiho yetiho. Random je taky algoritmus :D
-        $randomYeti = $connection->fetchAssociative('SELECT id FROM yeti WHERE id != ? ORDER BY RAND() LIMIT 1', [$id]);
+
+        // ZIskani dalsiho yetiho. Random je taky algoritmus :D I když jsem podchitil aby se nezobrazil stejný yety + udržoval gender
+        $randomYeti = $connection->fetchAssociative('SELECT id FROM yeti WHERE id != ? AND gender = ? ORDER BY RAND() LIMIT 1', [$id,$ratingGender], );
 
         // Presmerovani dal (tinder "Swajpovani")
         return $this->redirectToRoute('yeti_detail', ['id' => $randomYeti['id']]);
