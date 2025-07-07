@@ -18,4 +18,5 @@ Entity
 Misc
     - Vývoj proběhl ve VSCode cistě z duvodu toho, že jsem na něho doma zvyklí. V práci jsem však IDEA prostředí používal a problém s ním nemám
     - PHP jsem spouštěl lokálně
+    - Celý projekt je single branch protože to takto bude jednodužší. S větvěmy jsem samozřejmně zvyklí pracovat na dení bázi :) Tento koment je pridan pomoci branche
     - Unit testy jsem negeneroval i když chápu že jsou duležité. Přiznám se ale že s psaním testů mám poměrně povrchní zkušenosti
