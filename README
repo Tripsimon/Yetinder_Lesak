@@ -1,22 +1,22 @@
 .ENV
-    - Env soubor by samozějmně v Git repozitáři být neměl, i kdyby byl privátní. Pro jednoduchost zapnutí jsem však .ENV ručně z .gitignore vyndal aby si je pan programátor nemusel doplňovat sám.
+    - Env soubor by samozřejmě v Git repositáři být neměl, i kdyby byl privátní. Pro jednoduchost zapnutí jsem však .ENV ručně z .gitignore vyndal, aby si je pan programátor nemusel doplňovat sám.
     - Já například .ENV k projektům přiřazuji pomocí CI/CD při nasazování.
 
 UI:
-    - Nevím jak je to u vás, David mi odpověděl že využíváte kombinaci react.twig komponent a čistých html komponent. Já využil prostě jen html + bootstrap vzhledem k tomu že na UI pry nebyl kladen duraz. Jinak mám React + tailwind jednoznačně nejraději
+    - nejsem si jistý, jak je to u vás. David mi odpověděl že využíváte kombinaci react.twig komponent a čistých html komponent. Já využil prostě jen html + Bootstrap vzhledem k tomu že na UI prý nebyl kladen důraz. Jinak mám React + Tailwind jednoznačně nejraději
 DB:
-    - Podle emailu mám využít MariaDB. Jinak bych použil MySQL. Neníto preference, čistě jen zvyk 
-    - Součástí docker nasazení je i ADMINER pro jednoduchý průzkum DB projektu
-    - Komunikace s DB je samozřejmně sanitizována. Nikde není concate vstupu uživatele do SQL dotazu... to si ale DBAL zajistí samo
-    - Při tvorbě projektu jsem objevil ze order by RAND podporuje pouze MySQL... což maria technicky v zato je tak jsem to využil
-    - !! POZOR !! - Každý yety u sebe má i momentalní hodnocení. vypočet těch je vyráběn pomocí triggeru.  To asi neni uplně optimální řešení, dovedu si představit něco jako FB kde se né vždy zobrazí přesný rating ale dopočítá se pak někdy stranou pomocí nějakého cronu. Nebo to dělat lokálně a pak... zavisí to na požadavku na aplikaci. Trigger jsem nechtěl dávat do migrace tak je stranou v souboru yetiRatingTrigger.sql
+    - Podle emailu mám využít MariaDB. Jinak bych použil MySQL. Není to preference, čistě jen zvyk 
+    - Součástí Docker nasazení je i ADMINER pro jednoduchý průzkum DB projektu
+    - Komunikace s DB je samozřejmě sanitizována. Nikde není concate vstupu uživatele do SQL dotazu... to si ale DBAL zajistí samo
+    - Při tvorbě projektu jsem objevil ze order by RAND podporuje pouze MySQL... což Maria technicky vzato je, tak jsem to využil
+    - !! POZOR !! - Každý Yety u sebe má i momentální hodnocení. vypočet těch je vyráběn pomocí triggeru.  To asi není úplně optimální řešení, dovedu si představit něco jako FB kde se ne vždy zobrazí přesný rating, ale dopočítá se pak někdy stranou pomocí nějakého cronu. Nebo to dělat lokálně a pak... závisí to na požadavku na aplikaci. Trigger jsem nechtěl dávat do migrace tak je stranou v souboru yetiRatingTrigger.sql
     - db dump je v souboru yetinderdump.sql
-    - Projekt ma připravené fixtury.. prvnich 10 yetíků je možné vytvořit pomocí nich
+    - Projekt má připravené fixtury.. prvních 10 yetíků je možné vytvořit pomocí nich
 Entity
-    - byl využit Symfony Entity generator
+    - byl využit Symfony Entity generátor
 
 Misc
-    - Vývoj proběhl ve VSCode cistě z duvodu toho, že jsem na něho doma zvyklí. V práci jsem však IDEA prostředí používal a problém s ním nemám
+    - Vývoj proběhl ve VSCode cistě z důvodu toho, že jsem na něho doma zvyklí. V práci jsem však IDEA prostředí používal a problém s ním nemám
     - PHP jsem spouštěl lokálně
-    - Celý projekt je single branch protože to takto bude jednodužší. S větvěmy jsem samozřejmně zvyklí pracovat na dení bázi :) Tento koment je pridan pomoci branche
-    - Unit testy jsem negeneroval i když chápu že jsou duležité. Přiznám se ale že s psaním testů mám poměrně povrchní zkušenosti
+    - Celý projekt je single branch protože to takto bude jednodušší. S větvemi jsem samozřejmě zvyklí pracovat na denní bázi :) Tento koment je přidán pomoci branche
+    - Unit testy jsem negeneroval i když chápu že jsou důležité. Přiznám se, ale že s psaním testů mám poměrně povrchní zkušenosti
